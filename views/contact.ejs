@@ -1,0 +1,15 @@
+<%- include('partials/header'); -%>
+
+<h1>Contact</h1>
+<p><%= phoneContactContent%></p>
+<p><%= emailContactContent%></p>
+
+<%- include('partials/footer'); -%>
+
+<script type="text/javascript">
+  $(window).on('load', function(){
+    console.log('home page loaded');
+    $("li").removeClass("active");
+    $("li.contact").addClass("active");
+  });
+</script>

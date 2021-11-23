@@ -1,0 +1,14 @@
+<%- include('partials/header'); -%>
+
+<h1>About</h1>
+<p><%= aboutPageContent%></p>
+
+<%- include('partials/footer'); -%>
+
+<script type="text/javascript">
+  $(window).on('load', function(){
+    console.log('home page loaded');
+    $("li").removeClass("active");
+    $("li.about").addClass("active");
+  });
+</script>

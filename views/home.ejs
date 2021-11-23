@@ -1,0 +1,30 @@
+<%- include('partials/header'); -%>
+
+<p class="mt-3"><%= homePageContent %></p>
+
+<% postsData.forEach(function(ele){ %>
+<h3><%= ele.title %></h3>
+<% let body = ele.body; %>
+<% if (body.length > 100) { %>
+<p>
+  <%= body.substring(0, 100) + " ..." %>
+  <a href="/posts/<%= ele.title %>">Read More</a>
+</p>
+
+<% }else { %>
+<p><%= body %></p>
+<% } %>
+
+<% }); %>
+
+<button class="btn btn-primary btn-lg addPost" type="button" name="addPost" onclick="location.href = '/compose';">Create Post</button>
+
+<%- include('partials/footer'); -%>
+
+
+<script type="text/javascript">
+  $(window).on('load', function(){
+    $("li").removeClass("active");
+    $("li.home").addClass("active");
+  });
+</script>
