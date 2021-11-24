@@ -35,7 +35,7 @@ const postSchema = {
 
 const Post = mongoose.model('Post',postSchema);
 
-app.use('/favicon.ico', express.static('public/todoIcon.svg'));
+app.use('/favicon.ico', express.static('public/blog-icon.svg'));
 
 app.get('/', function(req, res) {
   Post.find({}, function(err, posts){
