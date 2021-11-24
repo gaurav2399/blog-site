@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const password = require('./secrets/password.js');
+const password = require('./secrets/password');
 
 const homeStartingContent = "This is a blog webiste. Here you can create post by clicking on 'create post' button.";
 const aboutContent = "This website is design and develope by Gaurav Sharma.";
@@ -14,6 +14,7 @@ const emailContactContent = "Email : gauravbhardwaj882@gmail.com";
 
 const app = express();
 const posts = [];
+
 
 const mongo_url_cloud = "mongodb+srv://" + password.username + ":" + password.password + "@cluster0.udwj8.mongodb.net/blogDB?retryWrites=true&w=majority";
 const mongo_url_local = "mongodb://localhost:27017/blogDB";
@@ -90,7 +91,7 @@ app.get('/posts/:topic', function(req, res) {
 app.post('/posts/', function(req, res){
   const postTitle = req.body.postTitle;
   res.redirect('/posts/' + postTitle);
-})
+});
 
 app.post('/compose', function(req, res) {
   const post = new Post({
@@ -104,14 +105,12 @@ app.post('/compose', function(req, res) {
       res.send('error while saving post : ' + err);
     }
   });
-
 });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
-app.listen(port);
 
 app.listen(port, function() {
   console.log("Server started on port 3000");
