@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const password = require('./secrets/password');
+const password = require('./secrets/password.js');
 
 const homeStartingContent = "This is a blog webiste. Here you can create post by clicking on 'create post' button.";
 const aboutContent = "This website is design and develope by Gaurav Sharma.";
