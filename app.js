@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const password = require('./secrets/password.js');
+const secrets = require('./env/secrets');
 
 const homeStartingContent = "This is a blog webiste. Here you can create post by clicking on 'create post' button.";
 const aboutContent = "This website is design and develope by Gaurav Sharma.";
@@ -16,7 +16,7 @@ const app = express();
 const posts = [];
 
 
-const mongo_url_cloud = "mongodb+srv://" + password.username + ":" + password.password + "@cluster0.udwj8.mongodb.net/blogDB?retryWrites=true&w=majority";
+const mongo_url_cloud = "mongodb+srv://" + secrets.username + ":" + secrets.password + "@cluster0.udwj8.mongodb.net/blogDB?retryWrites=true&w=majority";
 const mongo_url_local = "mongodb://localhost:27017/blogDB";
 
 mongoose.connect(mongo_url_cloud);
