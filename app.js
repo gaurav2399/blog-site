@@ -13,7 +13,8 @@ const phoneContactContent = "Mobile No. : 8630767682";
 const emailContactContent = "Email : gauravbhardwaj882@gmail.com";
 
 const app = express();
-const posts = [];
+
+app.use(express.static("public"));
 
 
 const mongo_url_cloud = "mongodb+srv://" + secrets.username + ":" + secrets.password + "@cluster0.udwj8.mongodb.net/blogDB?retryWrites=true&w=majority";
@@ -27,14 +28,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static("public"));
-
 const postSchema = {
   title: String,
   body: String
 };
 
 const Post = mongoose.model('Post',postSchema);
+
+app.use('/favicon.ico', express.static('public/todoIcon.svg'));
 
 app.get('/', function(req, res) {
   Post.find({}, function(err, posts){
